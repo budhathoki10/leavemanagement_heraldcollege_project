@@ -80,6 +80,7 @@ Herald college, Kathmandu
 `
 };
 
+// sending mail
 transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
         console.log('Error occurred: ', error);
@@ -87,6 +88,8 @@ transporter.sendMail(mailOptions, (error, info) => {
         console.log('Email sent: ', info.response);
     }
 });
+
+
 
 
 
