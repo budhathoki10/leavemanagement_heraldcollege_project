@@ -1,7 +1,7 @@
 const express =require('express')
 const mongoose= require("mongoose")
 const loginsignup= require("./loginsignup/loginsignup")
-const route= require('./router/route')
+const routing= require('./router/route')
 let app =express()
 app.use(express.json())
 require("dotenv").config()
@@ -12,7 +12,7 @@ mongoose.connect(process.env.MONGO_URl).then(()=>{
 })
 
 app.use("/api/user",loginsignup)
-app.use("/api/task",route)
+app.use("/api/task",routing)
 
 app.listen(5000,()=>{
     console.log("sucessfully connected to server");

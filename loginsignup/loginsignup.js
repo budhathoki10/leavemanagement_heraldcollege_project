@@ -38,10 +38,10 @@ route.post("/login",async(req,res)=>{
        if(!validpassword){
        return  res.status(404).json({message:"incorrect password"})
        }
-         const token=  jwt.sign({id:checkemail._id, role:checkemail.role },process.env.SECERET_KEY,{
+         const accessToken=  jwt.sign({id:checkemail._id, role:checkemail.role },process.env.ACCESS_TOKEN_SECERET_KEY,{
             expiresIn:"10h"
           }) 
-        res.status(200).json({message:"sucessfully login", token:token})
+        res.status(200).json({message:"sucessfully login", token:accessToken})
     } catch (error) {
         return res.status(404).json({message:"error to login"})
     }

@@ -88,11 +88,6 @@ transporter.sendMail(mailOptions, (error, info) => {
         console.log('Email sent: ', info.response);
     }
 });
-
-
-
-
-
 }
 
 module.exports={viewpendingleaves,update}

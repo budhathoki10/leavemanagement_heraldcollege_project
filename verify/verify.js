@@ -1,7 +1,5 @@
-const express = require('express');
-const jwt = require("jsonwebtoken");
-const user = require("../schema/user");
 
+const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 const auth = (req, res, next) => {
@@ -17,7 +15,7 @@ const auth = (req, res, next) => {
         const token = head.split(" ")[1]; 
         
    
-        const verify = jwt.verify(token, process.env.SECERET_KEY);
+        const verify = jwt.verify(token, process.env.ACCESS_TOKEN_SECERET_KEY);
         
         if (!verify) {
             return res.status(401).json({ message: "Invalid token" }); 
