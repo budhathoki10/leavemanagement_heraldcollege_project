@@ -14,7 +14,8 @@ let leavedetail= mongoose.Schema({
          type:String,
         required:true
     },
-    leaveday:{
+
+    leaveday: {
         type:Number,
         default:1,
         required:true
@@ -29,7 +30,8 @@ let leavedetail= mongoose.Schema({
         type:String,
         default:"normal",
         required:true
-    },  
+    },
+
     description:{
         type:String,
         required:true
@@ -38,6 +40,17 @@ let leavedetail= mongoose.Schema({
         type:String,
         enum:["pending","approve","reject"],
         default:"pending"
+    },
+    
+    image:{
+        type:String,
+        default:"no need of image"
+
+    },
+    
+    image_data: {
+        data: String, 
+        contentType: String
     },
 
     reviewby:{

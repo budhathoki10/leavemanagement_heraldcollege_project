@@ -3,6 +3,7 @@ const mongoose= require("mongoose")
 const loginsignup= require("./loginsignup/loginsignup")
 const routing= require('./router/route')
 let app =express()
+const multer= require("multer")
 app.use(express.json())
 require("dotenv").config()
 mongoose.connect(process.env.MONGO_URl).then(()=>{
@@ -10,6 +11,8 @@ mongoose.connect(process.env.MONGO_URl).then(()=>{
 }).catch(()=>{
     console.log("error to connect in mongodb");
 })
+
+
 
 app.use("/api/user",loginsignup)
 app.use("/api/task",routing)

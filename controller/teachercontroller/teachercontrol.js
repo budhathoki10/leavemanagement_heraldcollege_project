@@ -65,13 +65,15 @@ const transporter = nodemailer.createTransport({
     }
 });
 
+
+// making more formal email content
 const mailOptions = {
     from: 'registrytimetableexamination@gmail.com',
     to: `${checkid.email}`,
     subject: 'Leave Application reply',
     text: `Dear ${checkid.student_name},
 
-We would like to inform you that your application has been ${updates.status}.
+We would like to inform you that your application of ${checkid.leavetype} leave for ${checkid.leaveday} day/s has been ${updates.status}.
 
 Thank you for notifying us
 
@@ -80,7 +82,7 @@ Herald college, Kathmandu
 `
 };
 
-// sending mail
+
 transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
         console.log('Error occurred: ', error);
