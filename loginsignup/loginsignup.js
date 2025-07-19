@@ -7,6 +7,19 @@ const jwt= require("jsonwebtoken")
 route.post("/register",async(req,res)=>{
    try {
      const {email,password,role}= req.body
+     
+    //  make a only one admin with email: registrytimetableexamination@gmail.com
+     if (role==="admin"){
+      const checkteacher= await userschema.findOne({role:"admin"})
+      if(checkteacher){
+        return res.status(400).json({message:"cannot have multiple admin"})
+      }
+     if(email!="registrytimetableexamination@heraldcollege.edu.np"){
+        return res.status(400).json({message:"incorrect email for admin "})
+     }
+     }
+
+     
     if(!email.endsWith("@heraldcollege.edu.np")){
       return  res.status(404).json({message:"please use college email"})
     }
@@ -38,7 +51,7 @@ route.post("/login",async(req,res)=>{
        if(!validpassword){
        return  res.status(404).json({message:"incorrect password"})
        }
-         const accessToken=  jwt.sign({id:checkemail._id, role:checkemail.role },process.env.ACCESS_TOKEN_SECERET_KEY,{
+         const accessToken=  jwt.sign({id:checkemail._id, role:checkemail.role },process.env.ACCESS_TOKEN_SECRET_KEY,{
             expiresIn:"10h"
           }) 
         res.status(200).json({message:"sucessfully login", token:accessToken})
@@ -47,4 +60,4 @@ route.post("/login",async(req,res)=>{
     }
 })
 
-module.exports= route
+module.exports = route;

@@ -11,7 +11,7 @@ let userdetail= mongoose.Schema({
     },
     role:{
         type:String,
-        enum:["student","teacher"],
+        enum:["student","admin"],
         default:"student"
     }
 })

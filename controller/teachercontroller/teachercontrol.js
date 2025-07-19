@@ -39,6 +39,7 @@ const update= async(req,res)=>{
     const updatedata= {
             status,
             reviewby:"registrytimetableexamination@gmail.com",
+             leaveday:0,
     }
 
     if(status==="approve"){

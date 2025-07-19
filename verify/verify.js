@@ -30,7 +30,7 @@ const auth = (req, res, next) => {
 };
 const isteacher = (req, res, next) => {
    
-    if (req.user?.role != "teacher") {
+    if (req.user?.role != "admin") {
         return res.status(403).json({ message: "Teacher access only" });
     }
     next();
